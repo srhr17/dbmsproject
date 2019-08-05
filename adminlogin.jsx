@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { Container } from "reactstrap";
 
-class ownerlogin extends Component {
-  state = { ownername: "ownername", oid: "oid", noofpaintings: null };
+class adminlogin extends Component {
+  state = { adminname: "adminname", aid: "aid", noofpaintings: null };
   /*  here = event => {
-    this.setState({ ownername: event.target.value - date2.getUTCDate() });
+    this.setState({ adminname: event.target.value - date2.getUTCDate() });
   };*/
 
   render() {
@@ -20,11 +20,11 @@ class ownerlogin extends Component {
             }}
           >
             <h2 style={{ marginLeft: "10%", display: "inline" }}>
-              Welcome, {this.state.ownername}
+              Welcome, {this.state.adminname}
               {"   "}
             </h2>
-            <h6 style={{ display: "inline" }} className="badge badge-primary">
-              owner
+            <h6 style={{ display: "inline" }} className="badge badge-warning">
+              admin
             </h6>
 
             <p
@@ -32,7 +32,7 @@ class ownerlogin extends Component {
                 marginLeft: "35%"
               }}
             >
-              {this.state.oid}
+              {this.state.aid}
             </p>
             <Container
               style={{
@@ -54,24 +54,24 @@ class ownerlogin extends Component {
               <br />
               <ul class="breadcrumb navbar navbar-inverse">
                 <li>
-                  <a href="#" to="/Accountinfoowner">
+                  <a href="#" to="/Accountinfoadmin">
                     Account info
                   </a>
                 </li>
                 <li class="active">
-                  <a href="#" exact to="/SubmitPainting">
-                    Submit Painting
+                  <a href="#" exact to="/Ownerinfo">
+                    Owner info
                   </a>
                 </li>
                 <li>
-                  <a href="#" to="/ViewPainting">
+                  <a href="#" to="/Customerinfo">
                     {" "}
-                    View Painting{" "}
+                    Customer info{" "}
                   </a>
                 </li>
                 <li>
-                  <a href="#" class="" to="/ResubmitPainting">
-                    Resubmit Painting
+                  <a href="#" class="" to="/Transactions">
+                    Transactions
                   </a>
                 </li>
               </ul>
@@ -87,4 +87,4 @@ class ownerlogin extends Component {
   }
 }
 
-export default ownerlogin;
+export default adminlogin;
