@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
+
 import {
   Container,
   Col,
@@ -11,7 +12,18 @@ import {
 } from "reactstrap";
 
 class home extends Component {
-  state = {};
+  state = { email: "", password: "" };
+
+  emailChange = event => {
+    this.setState({ email: event.target.value });
+  };
+  passwordChange = event => {
+    this.setState({ password: event.target.value });
+  };
+  submit = event => {
+    if (this.state.email === "") {
+    }
+  };
 
   render() {
     return (
@@ -48,6 +60,8 @@ class home extends Component {
                   type="email"
                   name="email"
                   id="exampleEmail"
+                  onChange={this.emailChange}
+                  className="form-control"
                   placeholder="myemail@email.com"
                   style={{
                     marginLeft: "18%",
@@ -68,6 +82,7 @@ class home extends Component {
                   name="password"
                   id="examplePassword"
                   placeholder="********"
+                  onChange={this.passwordChange}
                   style={{
                     marginLeft: "18%",
                     width: "400px",
@@ -78,7 +93,15 @@ class home extends Component {
             </Col>
             <br />
             <br />
-            <Button className="btn btn-primary">Submit</Button>
+            <Button className="btn btn-primary" onClick={this.submit}>
+              Submit
+            </Button>
+            <br />
+            <br />
+            <Button className="btn btn-primary" onClick={this.signup}>
+              Sign Up
+            </Button>
+            <br />
             <br />
             <br />
           </Form>
