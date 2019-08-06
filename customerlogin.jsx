@@ -1,10 +1,5 @@
 import React, { Component } from "react";
 import { Container } from "reactstrap";
-import { BrowserRouter, Route } from "react-router-dom";
-import Owneraccountinfo from "./owneraccountinfo";
-import ViewPainting from "./ownerviewpainting";
-import Ownerresubmitpainting from "./ownerresubmitpainting";
-import Ownersubmitpainting from "./ownersubmitpainting";
 import {
   BrowserRouter as Router,
   Link,
@@ -12,29 +7,29 @@ import {
   Redirect
 } from "react-router-dom";
 
-class ownerlogin extends Component {
-  state = { ownername: "ownername", oid: "oid", noofpaintings: null };
+class customerlogin extends Component {
+  state = { customername: "customername", cid: "cid", noofpaintings: null };
   /*  here = event => {
     this.setState({ ownername: event.target.value - date2.getUTCDate() });
   };*/
 
   accountinfo = event => {
-    window.history.pushState("/owneraccountinfo");
+    window.history.pushState("/accountinfocustomer");
     window.location.reload();
   };
 
   submitpainting = event => {
-    window.history.pushState("/SubmitPainting");
+    window.history.pushState("/HirePainting");
     window.location.reload();
   };
 
   viewpainting = event => {
-    window.history.pushState("/ViewPainting");
+    window.history.pushState("/ReturnPainting");
     window.location.reload();
   };
 
   resubmitpainting = event => {
-    window.history.pushState("/ResubmitPainting");
+    window.history.pushState("/HireHistory");
     window.location.reload();
   };
 
@@ -51,19 +46,19 @@ class ownerlogin extends Component {
             }}
           >
             <h2 style={{ marginLeft: "10%", display: "inline" }}>
-              Welcome, {this.state.ownername}
+              Welcome, {this.state.customername}
               {"   "}
             </h2>
             <h6 style={{ display: "inline" }} className="badge badge-primary">
-              owner
+              customer
             </h6>
 
             <p
               style={{
-                marginLeft: "35%"
+                marginLeft: "40%"
               }}
             >
-              {this.state.oid}
+              {this.state.cid}
             </p>
             <Container
               style={{
@@ -83,30 +78,29 @@ class ownerlogin extends Component {
               <br />
               <br />
               <br />
-
               <Router>
                 <ul class="breadcrumb navbar navbar-inverse">
                   <li>
-                    <NavLink to="/owneraccountinfo" onClick={this.accountinfo}>
-                      Account Info
+                    <NavLink
+                      to="/accountinfocustomer"
+                      onClick={this.accountinfo}
+                    >
+                      Account info
                     </NavLink>
                   </li>
                   <li class="active">
-                    <NavLink to="/SubmitPainting" onClick={this.submitpainting}>
-                      SubmitPainting
+                    <NavLink to="/HirePainting" onClick={this.submitpainting}>
+                      Hire a Painting
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink to="/ViewPainting" onClick={this.viewpainting}>
-                      View Painting
+                    <NavLink to="/ReturnPainting" onClick={this.viewpainting}>
+                      Return a Painting{" "}
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink
-                      to="/ResubmitPainting"
-                      onClick={this.resubmitpainting}
-                    >
-                      Resubmit Painting
+                    <NavLink to="/HireHistory" onClick={this.resubmitpainting}>
+                      Hire History
                     </NavLink>
                   </li>
                 </ul>
@@ -123,4 +117,4 @@ class ownerlogin extends Component {
   }
 }
 
-export default ownerlogin;
+export default customerlogin;
