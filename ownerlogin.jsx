@@ -1,11 +1,26 @@
 import React, { Component } from "react";
 import { Container } from "reactstrap";
+import { BrowserRouter, Route } from "react-router-dom";
+import Owneraccountinfo from "./owneraccountinfo";
+import ViewPainting from "./ownerviewpainting";
+import Ownerresubmitpainting from "./ownerresubmitpainting";
+import Ownersubmitpainting from "./ownersubmitpainting";
+import {
+  BrowserRouter as Router,
+  Link,
+  NavLink,
+  Redirect
+} from "react-router-dom";
 
 class ownerlogin extends Component {
   state = { ownername: "ownername", oid: "oid", noofpaintings: null };
   /*  here = event => {
     this.setState({ ownername: event.target.value - date2.getUTCDate() });
   };*/
+
+  accountinfo = event => {
+    window.history.pushState("/owneraccountinfo");
+  };
 
   render() {
     return (
@@ -52,29 +67,25 @@ class ownerlogin extends Component {
               <br />
               <br />
               <br />
-              <ul class="breadcrumb navbar navbar-inverse">
-                <li>
-                  <a href="#" to="/Accountinfoowner">
-                    Account info
-                  </a>
-                </li>
-                <li class="active">
-                  <a href="#" exact to="/SubmitPainting">
-                    Submit Painting
-                  </a>
-                </li>
-                <li>
-                  <a href="#" to="/ViewPainting">
-                    {" "}
-                    View Painting{" "}
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="" to="/ResubmitPainting">
-                    Resubmit Painting
-                  </a>
-                </li>
-              </ul>
+
+              <Router>
+                <ul class="breadcrumb navbar navbar-inverse">
+                  <li>
+                    <NavLink to="/owneraccountinfo" onClick={this.accountinfo}>
+                      Account Info
+                    </NavLink>
+                  </li>
+                  <li class="active">
+                    <NavLink to="/SubmitPainting">SubmitPainting</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/ViewPainting">View Painting</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/ResubmitPainting">Resubmit Painting</NavLink>
+                  </li>
+                </ul>
+              </Router>
             </Container>
             <br />
             <br />

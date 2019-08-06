@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 //import ReactDOM from "react-dom";
+import Home from "./home";
 import {
   BrowserRouter as Router,
   Link,
@@ -8,7 +9,7 @@ import {
   Redirect
 } from "react-router-dom";
 //import Route from "react-router-dom/Route";
-
+import Erdiagram from "./erdiagram";
 import Problemstatement from "./problemstatement.jsx";
 import {
   Container,
@@ -19,11 +20,6 @@ import {
   Input,
   Button
 } from "reactstrap";
-
-const problemstatement = () => {
-  //window.location("/problemstatement");
-  return <Redirect to="/problemstatement" Component={Problemstatement} />;
-};
 
 class signup extends Component {
   state = { name: "", email: "", password: "", contact: "", usertype: "" };
@@ -40,6 +36,7 @@ class signup extends Component {
   contactChange = event => {
     this.setState({ contact: event.target.value });
   };
+
   submit = event => {
     if (this.state.email === "") {
     }
@@ -54,6 +51,23 @@ class signup extends Component {
     if (event.target.value === "Owner") {
       this.setState({ usertype: "owner" });
     }
+  };
+
+  home = () => {
+    window.history.pushState("/home");
+    window.location.reload();
+  };
+  problemstatement = () => {
+    window.history.pushState("/Problemstatement");
+    window.location.reload();
+  };
+  erdiagram = () => {
+    window.history.pushState("/erdiagram");
+    window.location.reload();
+  };
+  schemadiagram = () => {
+    window.history.pushState("/schemadiagram");
+    window.location.reload();
   };
 
   render() {
@@ -189,37 +203,40 @@ class signup extends Component {
           <br />
           <BrowserRouter>
             <div>
-              <Route path="/problemstatement" component={Problemstatement} />{" "}
+              <Route path="/home" exact strict component={Home} />{" "}
+              <Route
+                path="/problemstatement"
+                exact
+                strict
+                component={Problemstatement}
+              />{" "}
+              <Route path="/erdiagram" exact strict component={Erdiagram} />{" "}
             </div>
           </BrowserRouter>
           <Router>
             <ul class="breadcrumb navbar navbar-inverse">
               <li>
-                <NavLink to="/home" exact activeStyle={{ color: "black" }}>
-                  Home
+                <NavLink
+                  to="/home"
+                  exact
+                  activeStyle={{ color: "black" }}
+                  onClick={this.home}
+                >
+                  Sign In
                 </NavLink>
               </li>
               <li>
-                <NavLink
-                  to="/problemstatement"
-                  exact
-                  activeStyle={{ color: "black" }}
-                  Component={problemstatement}
-                >
+                <NavLink to="/Problemstatement" onClick={this.problemstatement}>
                   Problem Statement
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/erdiagram" exact activeStyle={{ color: "black" }}>
+                <NavLink to="/erdiagram" onClick={this.erdiagram}>
                   E-R Diagram
                 </NavLink>
               </li>
               <li>
-                <NavLink
-                  to="/schemadiagram"
-                  exact
-                  activeStyle={{ color: "black" }}
-                >
+                <NavLink to="/schemadiagram" onClick={this.schemadiagram}>
                   Schema Diagram
                 </NavLink>
               </li>
