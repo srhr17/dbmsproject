@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import {
+  BrowserRouter as Router,
+  Link,
+  NavLink,
+  Redirect
+} from "react-router-dom";
+import {
   Container,
   Col,
   Form,
@@ -11,7 +17,34 @@ import {
 } from "reactstrap";
 
 class home extends Component {
-  state = {};
+  state = { email: "", password: "" };
+
+  emailChange = event => {
+    this.setState({ email: event.target.value });
+  };
+  passwordChange = event => {
+    this.setState({ password: event.target.value });
+  };
+  submit = event => {
+    if (this.state.email === "") {
+    }
+  };
+  home = () => {
+    window.history.pushState("/");
+    window.location.reload();
+  };
+  problemstatement = () => {
+    window.history.pushState("/Problemstatement");
+    window.location.reload();
+  };
+  erdiagram = () => {
+    window.history.pushState("/erdiagram");
+    window.location.reload();
+  };
+  schemadiagram = () => {
+    window.history.pushState("/schemadiagram");
+    window.location.reload();
+  };
 
   render() {
     return (
@@ -48,6 +81,8 @@ class home extends Component {
                   type="email"
                   name="email"
                   id="exampleEmail"
+                  onChange={this.emailChange}
+                  className="form-control"
                   placeholder="myemail@email.com"
                   style={{
                     marginLeft: "18%",
@@ -68,6 +103,7 @@ class home extends Component {
                   name="password"
                   id="examplePassword"
                   placeholder="********"
+                  onChange={this.passwordChange}
                   style={{
                     marginLeft: "18%",
                     width: "400px",
@@ -78,7 +114,10 @@ class home extends Component {
             </Col>
             <br />
             <br />
-            <Button className="btn btn-primary">Submit</Button>
+            <Button className="btn btn-primary" onClick={this.submit}>
+              Submit
+            </Button>
+            <br />
             <br />
             <br />
           </Form>
@@ -86,25 +125,24 @@ class home extends Component {
           <br />
           <ul class="breadcrumb navbar navbar-inverse">
             <li class="active">
-              <a href="#" exact to="/">
-                Home
-              </a>
+              <NavLink to="/" onClick={this.home}>
+                Sign Up
+              </NavLink>
             </li>
             <li>
-              <a href="#" to="/Problemstatement">
-                {" "}
-                Problem Statement{" "}
-              </a>
+              <NavLink to="/Problemstatement" onClick={this.problemstatement}>
+                Problem Statement
+              </NavLink>
             </li>
             <li>
-              <a href="#" class="" to="/erdiagram">
-                E-R diagram
-              </a>
+              <NavLink to="/erdiagram" onClick={this.erdiagram}>
+                E-R Diagram
+              </NavLink>
             </li>
             <li>
-              <a href="#" to="/schema diagram">
-                Schema diagram
-              </a>
+              <NavLink to="/schemadiagram" onClick={this.schemadiagram}>
+                Schema Diagram
+              </NavLink>
             </li>
           </ul>
         </Container>
