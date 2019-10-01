@@ -1,40 +1,34 @@
 import React, { Component } from "react";
 import { Container } from "reactstrap";
-import { BrowserRouter, Route } from "react-router-dom";
-import Owneraccountinfo from "./owneraccountinfo";
-import ViewPainting from "./ownerviewpainting";
-import Ownerresubmitpainting from "./ownerresubmitpainting";
-import Ownersubmitpainting from "./ownersubmitpainting";
 import {
   BrowserRouter as Router,
   Link,
   NavLink,
   Redirect
 } from "react-router-dom";
-
-class ownerlogin extends Component {
-  state = { ownername: "ownername", oid: "oid", noofpaintings: null };
+class adminlogin extends Component {
+  state = { adminname: "adminname", aid: "aid", noofpaintings: null };
   /*  here = event => {
-    this.setState({ ownername: event.target.value - date2.getUTCDate() });
+    this.setState({ adminname: event.target.value - date2.getUTCDate() });
   };*/
 
   accountinfo = event => {
-    window.history.pushState("/owneraccountinfo");
+    window.history.pushState("/accountinfoadmin");
     window.location.reload();
   };
 
   submitpainting = event => {
-    window.history.pushState("/SubmitPainting");
+    window.history.pushState("/ownerinfo");
     window.location.reload();
   };
 
   viewpainting = event => {
-    window.history.pushState("/ViewPainting");
+    window.history.pushState("/customerinfo");
     window.location.reload();
   };
 
   resubmitpainting = event => {
-    window.history.pushState("/ResubmitPainting");
+    window.history.pushState("/paintinginfo");
     window.location.reload();
   };
 
@@ -51,11 +45,11 @@ class ownerlogin extends Component {
             }}
           >
             <h2 style={{ marginLeft: "10%", display: "inline" }}>
-              Welcome, {this.state.ownername}
+              Welcome, {this.state.adminname}
               {"   "}
             </h2>
-            <h6 style={{ display: "inline" }} className="badge badge-primary">
-              owner
+            <h6 style={{ display: "inline" }} className="badge badge-warning">
+              admin
             </h6>
 
             <p
@@ -63,7 +57,7 @@ class ownerlogin extends Component {
                 marginLeft: "35%"
               }}
             >
-              {this.state.oid}
+              {this.state.aid}
             </p>
             <Container
               style={{
@@ -83,34 +77,28 @@ class ownerlogin extends Component {
               <br />
               <br />
               <br />
-
               <Router>
                 <ul class="breadcrumb navbar navbar-inverse">
                   <li>
-                    <NavLink to="/owneraccountinfo" onClick={this.accountinfo}>
-                      Account Info
+                    <NavLink to="/accountinfoadmin" onClick={this.accountinfo}>
+                      Account info
                     </NavLink>
                   </li>
                   <li class="active">
-                    <NavLink to="/SubmitPainting" onClick={this.submitpainting}>
-                      SubmitPainting
+                    <NavLink to="/ownerinfo" onClick={this.submitpainting}>
+                      Owner Info
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink to="/ViewPainting" onClick={this.viewpainting}>
-                      View Painting
+                    <NavLink to="/customerinfo" onClick={this.viewpainting}>
+                      Customer Info{" "}
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink
-                      to="/ResubmitPainting"
-                      onClick={this.resubmitpainting}
-                    >
-                      Resubmit Painting
+                    <NavLink to="/paintinginfo" onClick={this.resubmitpainting}>
+                      Painting Info
                     </NavLink>
-
                   </li>
-
                 </ul>
               </Router>
             </Container>
@@ -128,4 +116,4 @@ class ownerlogin extends Component {
   }
 }
 
-export default ownerlogin;
+export default adminlogin;
